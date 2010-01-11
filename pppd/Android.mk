@@ -1,8 +1,15 @@
-ifeq ($(TARGET_ARCH),arm)
-
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
+LOCAL_BUILD_PPPD:=false
+ifeq ($(TARGET_ARCH),arm)
+ LOCAL_BUILD_PPPD:=true
+endif
+ifeq ($(TARGET_ARCH),mips)
+ LOCAL_BUILD_PPPD:=true
+endif
+
+ifeq ($(LOCAL_BUILD_PPPD),true)
 LOCAL_SRC_FILES:= \
 	main.c \
 	magic.c \
