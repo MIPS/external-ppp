@@ -1,5 +1,12 @@
+BUILD_PPPD:=false
 ifeq ($(TARGET_ARCH),arm)
+BUILD_PPPD:=true
+endif
+ifeq ($(TARGET_ARCH),mips)
+BUILD_PPPD:=true
+endif
 
+ifeq ($(BUILD_PPPD),true)
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
